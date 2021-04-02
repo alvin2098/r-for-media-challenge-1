@@ -1,3 +1,5 @@
+### --- R Challenge 1, Alvin Aziz, 02.04.2021 --- ###
+
 library(assertthat)
 
 # Complete the following statements following the the assignment below:
@@ -5,16 +7,32 @@ library(assertthat)
 # * Einwohner
 # * Bevölkerungsdichte in km2
 # * Nachname Bezirkamtsleiter
-# * Mehr als 100km2 Fläche (TRUE oder FALSE)
+# * Mehr als 100km2 Fläche (TRUE oder FALSE)  
 #
 # **Beantworte darüber hinaus folgende Fragen und nutze dafür dein neues R-Wissen:**
 #
 #   * Wie viele Menschen leben insgesamt in den Stadtteilen?
 #   * Wie hoch ist die Bevökerungsdichte im Durchschnitt?
 
-# hamburg_df <- …
-# inhabitants_sum <- …
-# density <- …
+### --- Vectors --- ###
+bezirk <- c("Hamburg-Mitte", "Altona", "Eimsbüttel", "Hamburg-Nord", "Wandsbek", "Bergedorf", "Harburg")
+einwohner <- c(301543, 275264, 267051, 314593, 441012, 130260, 169426)
+bevoelkerungsdichte <- c(2121, 3534, 5362, 5443, 2990, 841, 1353) # per Kilometer squared
+bezirksamtsleiter <- c("Droßmann", "von Berg", "Gätgens", "Werner-Boelz", "Ritzenhoff", "Dornquast", "Fredenhagen")
+flaecheRaw <- c(142.2, 77.9, 49.8, 57.8, 147.5, 154.8, 125.2) # in Kilometers squared
+flaeche <- flaecheRaw > 100
+
+### --- Dataframe --- ###
+hamburg_df <- data.frame(bezirk, einwohner, bevoelkerungsdichte, bezirksamtsleiter, flaeche)
+
+### --- Questions --- ###
+# Wie viele Menschen leben insgesamt in den Stadtteilen?
+inhabitants_sum <- sum(einwohner)
+paste(inhabitants_sum, "Menschen leben insgesamt in den Stadtteilen")
+
+# Wie hoch ist die Bevökerungsdichte im Durchschnitt?
+density <- mean(bevoelkerungsdichte)
+paste(density, "km² ist die durchschnittliche Bevölkerungsdichte")
 
 
 if(
@@ -69,3 +87,4 @@ if(
 ) {
   writeLines("Congrats! 10/10 points!")
 }
+
